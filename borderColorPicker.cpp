@@ -12,19 +12,19 @@ borderColorPicker::borderColorPicker(HSLAPixel fillColor, PNG & img, double tole
 
 HSLAPixel borderColorPicker::operator()(int x, int y)
 {
-  if(x - 3 < 0 || ctr.dist(*im.getPixel(x-3, y)) ){
+  if(x - 3 < 0 || ctr.dist(*im.getPixel(x-3, y)) >= tol ){
     return color;
   }
 
-  if(x + 3 > (int)im.width()-1 || ctr.dist(*im.getPixel(x+3,y))){
+  if(x + 3 > (int)im.width()-1 || ctr.dist(*im.getPixel(x+3,y)) >= tol){
     return color;
   }
 
-  if(y-3 < 0 || ctr.dist(*im.getPixel(x, y-3))){
+  if(y-3 < 0 || ctr.dist(*im.getPixel(x, y-3))>= tol){
     return color;
   }
 
-  if(y+3 > (int)im.height()-1 || ctr.dist(*im.getPixel(x, y+3))){
+  if(y+3 > (int)im.height()-1 || ctr.dist(*im.getPixel(x, y+3))>= tol){
     return color;
   }
 
